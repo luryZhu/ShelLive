@@ -1,0 +1,5 @@
+export const INIT_CITY="INIT_CITY"
+export const CHANGE_CITY="CHANGE_CITY"
+export const SEARCH_KEYWORDS="SEARCH_KEYWORDS"
+export const USER_LOGIN="USER_LOGIN"
+export const USER_LOGOUT="USER_LOGOUT"

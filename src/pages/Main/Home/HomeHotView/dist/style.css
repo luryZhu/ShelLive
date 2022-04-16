@@ -1,0 +1,28 @@
+.hotproduct .hot-container {
+  padding: 15px;
+  background: #fff;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px #e1e1e1;
+}
+.hotproduct .hot-container h3 {
+  margin: 6px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: blueviolet;
+}
+.hotproduct .hot-container ul li {
+  width: 25%;
+  overflow: hidden;
+  padding: 5px;
+  float: left;
+}
+.hotproduct .hot-container ul li a img {
+  width: 100%;
+  border-radius: 10%;
+}
+.hotproduct .hot-container ul li a span {
+  display: block;
+  text-align: center;
+  font-size: 15px;
+}

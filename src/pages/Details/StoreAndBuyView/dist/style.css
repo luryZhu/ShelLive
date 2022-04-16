@@ -1,0 +1,23 @@
+.store-and-buy-container {
+  border-top: 1px solid #f1f1f1;
+  background-color: #fff;
+  display: flex;
+}
+.store-and-buy-container .item-container {
+  flex: 1;
+  text-align: center;
+}
+.store-and-buy-container .item-container button {
+  width: 100%;
+  font-size: 16px;
+  background-color: blueviolet;
+  color: #fff;
+  padding: 10px 0;
+  border: 1px solid white;
+}
+.store-and-buy-container .item-container button.o {
+  background: blueviolet;
+}
+.store-and-buy-container .item-container button.selected {
+  color: #fff;
+}

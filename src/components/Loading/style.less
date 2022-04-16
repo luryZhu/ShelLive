@@ -1,0 +1,44 @@
+.loading{
+    margin: 20px auto;
+    width: 50px;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+
+    .bar {
+        width: 4px;
+        height: 6px;
+        background: blueviolet;
+        flex: 1;
+        margin: 0 3px;
+        animation: loading linear 1s infinite;
+        -webkit-animation: loading linear 1s infinite;
+
+        &:nth-child(1){
+            animation-delay:0s;
+        }
+        &:nth-child(2){
+            animation-delay:0.15s;
+        }
+        &:nth-child(3){
+            animation-delay:0.3s;
+        }
+        &:nth-child(4){
+            animation-delay:0.45s;
+        }
+        &:nth-child(5){
+            animation-delay:0.6s;
+        }
+    }
+}
+
+@keyframes loading 
+{
+    0%,60%,100% {transform: scale(1);}
+    30% {transform: scaleY(3);}
+}
+@-webkit-keyframes loading 
+{
+    0%,60%,100% {transform: scale(1);}
+    30% {transform: scaleY(3);}
+}
