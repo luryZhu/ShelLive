@@ -7,6 +7,7 @@ import Banner3 from "../../../assets/images/banner3.png"
 import HomeHotList from "./HomeHotList"
 // import HomeRecList from "./HomeRecList"
 import { useSelector } from "react-redux"
+import HomeWaterfall from "./HomeWaterFall"
 
 const Home = () =>{
     const city=useSelector(state => state.city)
@@ -15,7 +16,8 @@ const Home = () =>{
             <HeaderNav cityName={city.cityName}/>
             <Swiper banners={[Banner1,Banner2,Banner3]}/>
             <HomeHotList cityName={city.cityName}/>
-            {/* <HomeRecList></HomeRecList> */}
+            <HomeWaterfall cityName={city.cityName}/>
+
         </div>
     )
 }

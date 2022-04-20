@@ -8,8 +8,8 @@ const SearchListView=(props)=>{
     return (  
         <div>
             {
-                props.list.map((ele,idx)=>{
-                    return <Item item={ele} key={idx}></Item>
+                props.list.map((ele)=>{
+                    return <Item item={ele} key={ele.id}></Item>
                 })
             }
     

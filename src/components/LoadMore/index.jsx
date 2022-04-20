@@ -1,25 +1,40 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.less"
 import Loading from "../Loading"
-import useDebounce from "../../utils/debounce";
+// import useDebounce from "../../utils/debounce";
+import useThrottle from "../../utils/throttle";
 
 const LoadMore=(props)=>{
     const more=useRef()
-    const [loadTop,setLoadTop]=useState(10000)
-    const loadMoreDebounce =useDebounce(()=>{
-        console.log("loading");
-        props.onLoadMore()
+    // const [loadTop,setLoadTop]=useState(10000)
+    
+    // const loadMoreDebounce =useDebounce(()=>{
+    //     console.log("loading");
+    //     props.onLoadMore()
         
-    },300)
+    // },1000)
     // console.log(1111);
+    const onLoadMoreThrottle=useThrottle(props.onLoadMore,1000)
 
     useEffect(()=>{
-
-        function scrollHandle(){
-            // console.log(1111);
-            
+        let timer=null
+        const scrollHandle=()=>{       
             if (more.current){
-                setLoadTop(more.current.getBoundingClientRect().top)
+                // setLoadTop(more.current.getBoundingClientRect().top)
+                if(document.documentElement.clientHeight>more.current.getBoundingClientRect().top){
+                    // 防抖，重复触发，重新计时
+              
+                    // loadMoreDebounce()
+                    // if (!timer){
+                    //     console.log("load more")
+                    //     timer=setTimeout(()=>{
+                    //         props.onLoadMore()
+                    //         timer=null
+                    //     },1000)
+                    // }
+                    onLoadMoreThrottle()
+                    
+                }
             }
         }
 
@@ -32,22 +47,28 @@ const LoadMore=(props)=>{
         }
     },[])
 
-    useEffect(()=>{
-        if(document.documentElement.clientHeight>loadTop){
-            // 防抖，重复触发，重新计时
-            loadMoreDebounce()
-        }
+    // useEffect(()=>{
+    //     if(document.documentElement.clientHeight>loadTop){
+    //         // 防抖，重复触发，重新计时
+    //         // loadMoreDebounce()
+    //         setTimeout(props.onLoadMore,1000)
+    //     }
         
-    },[loadTop])
+    // },[loadTop])
 
       
 
     return (
         <div className="load-more" ref={more}>
-            <Loading></Loading>
+            {
+                props.hasMore
+                    ?<Loading></Loading>
+                    :<p>到底了……</p>
+            }
             
         </div>
     )
 }
 
 export default LoadMore
+

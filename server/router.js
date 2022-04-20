@@ -47,6 +47,27 @@ router.get('/home/hot2',(req,res)=>{
     })
 })
 
+router.get('/home/hot3',(req,res)=>{
+    const cityName=url.parse(req.url,true).query.cityName
+    const dataHot3 = new Array(10).fill(0).map(()=>{
+        return Mock.mock({
+                "id": Random.id(),
+                "title": cityName + Random.ctitle(6,12),
+                "houseType": "17/19层| 4室1厅 - 273.97 ㎡",
+                "price": Random.integer(10,30)*100,
+                "rentType": "整租",
+                "img": Random.image(`200x${Random.integer(200,300)}`, Random.color(), '#FFF', 'ShelLive')
+        })
+    })
+    res.send({
+        status: 200,
+        // result: homehot["北京"].hot2
+        result: dataHot3
+        // result: []
+    })
+})
+
+
 router.get('/search',(req,res)=>{
     const keywords=url.parse(req.url,true).query.keywords
     // console.log(req.url);

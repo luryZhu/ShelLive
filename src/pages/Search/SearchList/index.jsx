@@ -8,41 +8,50 @@ const SearchList=(props)=>{
     
     const [searchResult,setSearchResult]=useState([])
     const [hasMore, setHasMore]=useState(false)
-    const abortController=new AbortController()
+    const [isLoading, setIsLoading]=useState(true)
     const list=useRef()
+    const searchList=useRef()
 
     function loadMoreHandle(){
-        getList(true)
+        console.log(isLoading)
+        if (isLoading) {
+            setIsLoading(false)
+            getList(true)
+        }
     }
-
-    
+ 
     function getList(isLoadMore){
         api.getSearchResult({
             keywords: props.keywords
         }).then((res)=>{
-            if (res.data.status===200)
-                console.log(res.data.result.data);
+            if (res.data.status===200){
+                console.log("data",res.data.result.data);
                 if (isLoadMore){
-                    // console.log(list);
-                    list.current && setSearchResult(searchResult.concat(res.data.result.data))
+                    console.log("add searchlist");
+                    list.current && setSearchResult([...searchList.current,...res.data.result.data])
                     // console.log(searchResult);
                 } else {
+                    console.log("new searchlist")
                     list.current && setSearchResult(res.data.result.data)
                 }
                 
                 setHasMore(res.data.result.hasMore)
+                setIsLoading(true)
+            }
+        }, (reason)=>{
+            console.log(reason)
+            setIsLoading(true)
         })
     }
 
     useEffect(()=>{
-        getList(false)
-        return ()=>{
-            abortController.abort()
-        }
-
+        isLoading && getList(false)
     },[props.keywords])
 
-
+    useEffect(()=>{
+        console.log("new list",searchResult)
+        searchList.current=searchResult
+    },[searchResult])
 
     return (
         <div ref={list}>
