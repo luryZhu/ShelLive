@@ -14,7 +14,7 @@ const LoadMore=(props)=>{
         
     // },1000)
     // console.log(1111);
-    const onLoadMoreThrottle=useThrottle(props.onLoadMore,1000)
+    const [onLoadMoreThrottle]=useThrottle(props.onLoadMore,1000)
 
     useEffect(()=>{
         let timer=null

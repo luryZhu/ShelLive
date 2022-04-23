@@ -58,7 +58,7 @@ router.get('/home/hot3', function (req, res) {
       "houseType": "17/19层| 4室1厅 - 273.97 ㎡",
       "price": Random.integer(10, 30) * 100,
       "rentType": "整租",
-      "img": Random.image("200x".concat(Random.integer(200, 300)), Random.color(), '#FFF', 'ShelLive')
+      "img": Random.image("200x".concat(Random.integer(150, 200)), Random.color(), '#FFF', 'ShelLive')
     });
   });
   res.send({

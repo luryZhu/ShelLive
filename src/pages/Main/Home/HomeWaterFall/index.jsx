@@ -1,16 +1,17 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import Waterfall from "../../../../components/Waterfall";
 import LoadMore from "../../../../components/LoadMore";
 import api from "../../../../api";
 
 const HomeWaterfall=(props)=>{
     const [resultList,setResultList]=useState([])
+    const resultRef=useRef()
 
     function getList(){
         console.log("get list")
         api.getHomeHot3({cityName: props.cityName}).then((result)=>{
             // console.log(result.data.result)
-            setResultList(resultList.concat(result.data.result))
+            setResultList(resultRef.current.concat(result.data.result))
         })
     }
 
@@ -22,9 +23,10 @@ const HomeWaterfall=(props)=>{
         getList()
     },[])
 
-    // useEffect(()=>{
-    //     console.log(resultList)
-    // },[resultList])
+    useEffect(()=>{
+        // console.log(resultList)
+        resultRef.current=resultList
+    },[resultList])
 
     return (
         <Fragment>
@@ -34,7 +36,7 @@ const HomeWaterfall=(props)=>{
                 : null
             }
             
-            {/* <LoadMore onLoadMore={onLoadMore}></LoadMore> */}
+            <LoadMore hasMore={true} onLoadMore={onLoadMore}></LoadMore>
             <div style={{height: "50px"}}></div>
         </Fragment>
 

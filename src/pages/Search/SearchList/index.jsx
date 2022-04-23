@@ -3,6 +3,7 @@ import api from "../../../api";
 import SearchListView from "../SearchListView";
 import LoadMore from "../../../components/LoadMore";
 import Loading from "../../../components/Loading";
+import BackToTop from "../../../components/BackToTop";
 
 const SearchList=(props)=>{
     
@@ -55,6 +56,7 @@ const SearchList=(props)=>{
 
     return (
         <div ref={list}>
+            <BackToTop></BackToTop>
             {
                 searchResult.length>0? 
                 <SearchListView list={searchResult}></SearchListView>:

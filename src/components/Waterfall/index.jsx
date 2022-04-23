@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
+import BackToTop from "../BackToTop";
 import "./style.less"
 
 const Waterfall=({resultList})=>{
@@ -31,9 +32,7 @@ const Waterfall=({resultList})=>{
 
     return (
         <div id="waterfall-container">
-            <button>
-                top
-            </button>
+            <BackToTop bottomBias={50}></BackToTop>
             <div className="container">
                 {   
                     leftList.map(ele=>{
