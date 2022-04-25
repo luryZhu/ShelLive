@@ -550,18 +550,26 @@ module.exports = function (webpackEnv) {
             {
               test: lessRegex,
               exclude: lessModuleRegex,
-              use: getStyleLoaders(
+              use: [
+                ...getStyleLoaders(
+                  {
+                    importLoaders: 3,
+                    sourceMap: isEnvProduction
+                      ? shouldUseSourceMap
+                      : isEnvDevelopment,
+                    modules: {
+                      mode: 'icss',
+                    },
+                  },
+                  'less-loader'
+                ),
                 {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction
-                    ? shouldUseSourceMap
-                    : isEnvDevelopment,
-                  modules: {
-                    mode: 'icss',
+                  loader: 'style-resources-loader',
+                  options: {
+                    patterns :path.resolve(__dirname, '../src/assets/css/common.less'),
                   },
                 },
-                'less-loader'
-              ),
+              ],
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.

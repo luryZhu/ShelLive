@@ -2,7 +2,7 @@ import React from "react";
 
 const LifeService= ()=> {
     return (
-        <div>
+        <div className="middle">
             LifeService
 
         </div>

@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 
 function useThrottle(fn, delay=300){
     const timer=useRef()

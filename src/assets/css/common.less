@@ -12,6 +12,9 @@ body {
     }
 }
 
+@themeColor: lightseagreen;
+@greyShadow: #e1e1e1;
+
 input {
     outline:none;
 }
@@ -36,5 +39,17 @@ li{
     clear: both;
 }
 .active{
-  color: blueviolet;
+  color: @themeColor;
+}
+
+.middle{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+}
+
+.shadow-card{
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px @greyShadow;
 }

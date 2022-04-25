@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import api from "../../../api";
 import SearchListView from "../SearchListView";
 import LoadMore from "../../../components/LoadMore";
-import Loading from "../../../components/Loading";
 import BackToTop from "../../../components/BackToTop";
 
 const SearchList=(props)=>{
     
     const [searchResult,setSearchResult]=useState([])
-    const [hasMore, setHasMore]=useState(false)
+    const [hasMore, setHasMore]=useState(true)
     const [isLoading, setIsLoading]=useState(true)
     const list=useRef()
     const searchList=useRef()
@@ -59,8 +58,8 @@ const SearchList=(props)=>{
             <BackToTop></BackToTop>
             {
                 searchResult.length>0? 
-                <SearchListView list={searchResult}></SearchListView>:
-                <Loading></Loading>
+                <SearchListView list={searchResult}></SearchListView>: null
+                // <Loading></Loading>
             }
             {
                 hasMore?

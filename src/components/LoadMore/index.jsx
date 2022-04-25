@@ -1,39 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./style.less"
 import Loading from "../Loading"
 // import useDebounce from "../../utils/debounce";
-import useThrottle from "../../utils/throttle";
+// import useThrottle from "../../utils/throttle";
+import {jsThrottle} from "../../utils/throttle";
 
 const LoadMore=(props)=>{
     const more=useRef()
-    // const [loadTop,setLoadTop]=useState(10000)
-    
-    // const loadMoreDebounce =useDebounce(()=>{
-    //     console.log("loading");
-    //     props.onLoadMore()
-        
-    // },1000)
-    // console.log(1111);
-    const [onLoadMoreThrottle]=useThrottle(props.onLoadMore,1000)
+    // const [onLoadMoreThrottle]=useThrottle(props.onLoadMore,1000)
 
     useEffect(()=>{
-        let timer=null
+        const onLoadMoreThrottle=jsThrottle(props.onLoadMore,1000)
+
         const scrollHandle=()=>{       
             if (more.current){
-                // setLoadTop(more.current.getBoundingClientRect().top)
+                
                 if(document.documentElement.clientHeight>more.current.getBoundingClientRect().top){
-                    // 防抖，重复触发，重新计时
-              
-                    // loadMoreDebounce()
-                    // if (!timer){
-                    //     console.log("load more")
-                    //     timer=setTimeout(()=>{
-                    //         props.onLoadMore()
-                    //         timer=null
-                    //     },1000)
-                    // }
-                    onLoadMoreThrottle()
-                    
+                    // 节流，强制执行
+                    onLoadMoreThrottle()                  
                 }
             }
         }
@@ -63,7 +47,7 @@ const LoadMore=(props)=>{
             {
                 props.hasMore
                     ?<Loading></Loading>
-                    :<p>到底了……</p>
+                    :<div className="middle">到底了……</div>
             }
             
         </div>

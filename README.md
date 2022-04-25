@@ -1,6 +1,4 @@
-# GoodLive
-
-https://www.bilibili.com/video/BV1jg411N7Rm
+# ShelLive
 
 ## 技术栈
 
@@ -8,17 +6,26 @@ React + ReactHook + ReactRouter + Redux + Axios + Less + 第三方
 
 ## 功能实现
 
-1. 首页
-2. 城市管理
-3. 搜索
-4. 上拉加载
-5. 详情
-6. 收藏
-7. 订单
+首页
+- 城市管理
+- 推荐列表：瀑布流布局
+
+搜索
+- 搜索列表
+- 商品详情
+
+个人
+- 登录状态管理
+
+公共组件
+- 顶部搜索
+- 底部导航
+- 上拉加载
+- 回到顶部
 
 ## 环境构建
 
-### ==项目环境搭建==
+### 项目环境搭建
 
 使用React脚手架
 
@@ -187,7 +194,51 @@ ReactDOM.render(
 
 启动后样式生效就是配置成功
 
-![](./img/1.png)
+#### 5. 配置公共变量
+
+项目目录下的 `src/assets/css/common.less` 即为项目的公共样式文件，在项目顶层index.js中引用
+
+但是，在书写组件的样式时每次引入该文件比较复杂，这里使用webpack配置，参考 [react中如何使用less配置全局变量](https://juejin.cn/post/7051476074693132296)
+
+安装依赖：插件`style-resource`
+
+```
+cnpm install style-resources-loader --save
+```
+
+修改配置：按照第3步`config -> webpack.config.js`文件
+
+修改less-loader配置中的use属性，加入`style-resources-loader`
+
+``` js
+{
+    test: lessRegex,
+        exclude: lessModuleRegex,
+            use: [
+                ...getStyleLoaders(
+                    {
+                        importLoaders: 3,
+                        sourceMap: isEnvProduction
+                        ? shouldUseSourceMap
+                        : isEnvDevelopment,
+                        modules: {
+                            mode: 'icss',
+                        },
+                    },
+                    'less-loader'
+                ),
+                {
+                    loader: 'style-resources-loader',
+                    options: {
+                        patterns :path.resolve(__dirname, '../src/assets/css/common.less'),
+                    },
+                },
+            ],
+   ///
+}
+```
+
+之后在common.less中配置公共变量就能直接使用
 
 ### 配置Axios网络请求
 
@@ -207,7 +258,7 @@ cnpm install --save axios
 
 需求：Home(默认展示) LifeService Shop User 4个页面
 
-### ==配置路由 v6新增！==
+### ==配置路由 v5->v6==
 
 https://zhuanlan.zhihu.com/p/431389907
 
@@ -350,8 +401,6 @@ const CityList = (props) => {
 }
 export default CityList
 ```
-
-
 
 ### 配置样式
 

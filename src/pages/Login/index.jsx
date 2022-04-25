@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import LoginView from "./LoginView";
 import PubHeader from "../../components/PubHeader";
 import * as loginAction from "../../redux/actions"
-import "./style.less"
+// import "./style.less"
 
 const Login=(props)=>{
     const dispatch=useDispatch()

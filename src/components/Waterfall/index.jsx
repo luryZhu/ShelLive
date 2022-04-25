@@ -38,7 +38,6 @@ const Waterfall=({resultList})=>{
                     leftList.map(ele=>{
                         return <Item data={ele} key={ele.id}></Item>
                     })
-
                 }
             </div>
             <div className="container">
@@ -46,11 +45,8 @@ const Waterfall=({resultList})=>{
                     rightList.map(ele=>{
                         return <Item data={ele} key={ele.id}></Item>
                     })
-
                 }
             </div>
-           
-
         </div>
     )
 }

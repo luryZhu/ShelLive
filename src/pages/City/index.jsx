@@ -6,6 +6,7 @@ import CityLists from "./CityLists";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changeCity } from "../../redux/actions";
+import BackToTop from "../../components/BackToTop";
 
 const City=()=>{
     const navigate=useNavigate()
@@ -23,6 +24,7 @@ const City=()=>{
     }
     return (
         <div>
+            <BackToTop></BackToTop>
             <PubHeader title="当前城市"></PubHeader>
             <CurrentCity city={city.cityName}></CurrentCity>
             {/* <CityList onEvent={onCityEvent}></CityList> */}
