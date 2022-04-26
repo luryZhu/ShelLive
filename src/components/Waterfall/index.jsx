@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import Item from "./Item";
 import BackToTop from "../BackToTop";
 import "./style.less"
+import { useMount } from "../../hooks/useMount";
 
 const Waterfall=({resultList})=>{
     const [leftList, setLeftList]=useState([])
     const [rightList, setRightList]=useState([])
+    const isMount=useMount()
 
     useEffect(()=>{
+        if (!isMount()) return
         let lHight=0, rHight=0
         let left=[], right=[]
         console.log(1, resultList)

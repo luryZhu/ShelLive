@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchInput from "../SearchInput";
+import SearchInput from "../../../../components/SearchInput";
 import "./style.less"
 
 const HeaderNav= (props) => {

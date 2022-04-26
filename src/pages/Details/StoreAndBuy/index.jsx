@@ -18,6 +18,7 @@ const StoreAndBuy=(props)=>{
     },[])
 
     function isLogin(){
+        console.log(user)
         return (user.token !== "")
     }
 

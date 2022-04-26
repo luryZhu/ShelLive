@@ -25,18 +25,18 @@ const Item=(props)=>{
     return (
         <Link to={"/details/"+item.id}>
             <div className="list-item">
-            <img src={img} alt="house" />
-            <div className="mask">
-                <div className="left">
-                    <p>{item.title}</p>
-                    <p>{item.houseType}</p>
-                </div>
-                <div className="right">
-                    <div className="btn">{item.rentType}</div>
-                    <p dangerouslySetInnerHTML={{ __html:item.price + "元/月" }}></p>
+                <img src={img} alt="house" />
+                <div className="mask">
+                    <div className="left">
+                        <p>{item.title}</p>
+                        <p>{item.houseType}</p>
+                    </div>
+                    <div className="right">
+                        <div className="btn">{item.rentType}</div>
+                        <p dangerouslySetInnerHTML={{ __html:item.price + "元/月" }}></p>
+                    </div>
                 </div>
             </div>
-        </div>
         </Link>       
     )
 }

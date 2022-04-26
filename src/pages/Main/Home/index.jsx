@@ -1,5 +1,5 @@
 import React from "react"
-import HeaderNav from "../../../components/HeaderNav"
+import HeaderNav from "./HeaderNav"
 import Swiper from "../../../components/Swiper"
 import Banner1 from "../../../assets/images/banner1.png"
 import Banner2 from "../../../assets/images/banner2.png"

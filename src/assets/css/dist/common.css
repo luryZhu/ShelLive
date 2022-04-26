@@ -32,13 +32,19 @@ li {
   clear: both;
 }
 .active {
-  color: lightseagreen;
+  color: blueviolet;
 }
 .middle {
   display: flex;
   justify-content: center;
   align-content: center;
   padding: 10px;
+}
+.common-input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
 }
 .shadow-card {
   border-radius: 5px;

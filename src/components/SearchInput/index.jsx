@@ -1,18 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate,useParams } from "react-router-dom";
-// import { useSelector,useDispatch } from "react-redux";
-// import { searchKeywords } from "../../redux/actions";
+
 import "./style.less"
 
 const SearchInput=()=>{
     const navigate=useNavigate()
 
-    // const reduxKeywords=useSelector(state=>state.keywords)
-
-    // const dispatch=useDispatch()
-
     const params=useParams()
-    // console.log("params",params);
 
     const [keywords, setKeywords]= useState("")
 

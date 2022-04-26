@@ -14,10 +14,7 @@ export default function login(state=defaultState, action){
                 user: action.user
             }
         case USER_LOGOUT:
-            return {
-                token: "",
-                nickname: ""
-            }
+            return defaultState
         default:
             // return defaultState
             return state

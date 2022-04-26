@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useMount } from "../../hooks/useMount";
 import {jsThrottle} from "../../utils/throttle";
 import './style.less'
 
 const BackToTop=({bottomBias=0})=>{
     const [isVisible, setIsVisible]=useState(false)
+    const isMount=useMount()
     
     const ref=useRef()
     function onClickHandle(){
@@ -12,9 +14,9 @@ const BackToTop=({bottomBias=0})=>{
     
     
     useEffect(()=>{
-        let timer=null
         const scrollHandle=()=>{       
             // console.log(document.documentElement.scrollTop)
+            if (!isMount()) return
             if(document.documentElement.scrollTop>document.documentElement.clientHeight){
                 // show
                 setIsVisible(true)

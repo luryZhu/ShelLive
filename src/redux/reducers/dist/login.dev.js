@@ -25,10 +25,7 @@ function login() {
       };
 
     case _constants.USER_LOGOUT:
-      return {
-        token: "",
-        nickname: ""
-      };
+      return defaultState;
 
     default:
       // return defaultState
